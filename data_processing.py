@@ -32,6 +32,7 @@ def cleanFile(data):
   #nltk.download('punkt')
   stop_words = set(stopwords.words('english'))  
   filtered_sentence = []
+  filtered_title = []
   for t in data.text: 
     #remove special characters and numbers
     t = re.sub(r"\W+|_", " ", t)
@@ -40,7 +41,17 @@ def cleanFile(data):
     word_tokens = word_tokenize(t.lower())
     #remove stop words
     filtered_sentence.append(' '.join([w for w in word_tokens if not w in stop_words]))
-    
+  for t in data.title: 
+    #remove special characters and numbers
+    t = re.sub(r"\W+|_", " ", t)
+    t = re.sub(r'[0-9]+', '', t)
+    #Convert to lower case and tokenize
+    word_tokens = word_tokenize(t.lower())
+    #remove stop words
+    filtered_title.append(' '.join([w for w in word_tokens if not w in stop_words]))
+
+  data['filteredText'] = filtered_sentence
+  data['filteredTitle'] = filtered_title
 
   data['filteredText'] = filtered_sentence
 
