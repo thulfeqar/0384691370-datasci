@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[13]:
-
 
 import pandas as pd
 import re
@@ -23,8 +21,6 @@ import WordPlot
 #pip intall 
 
 
-# In[14]:
-
 
 #Loads data file from a given path into a dataframe
 # ID = Record ID
@@ -37,9 +33,6 @@ def loadFile(path):
   df = pd.read_csv(path,sep = ",",names= names,header = 0)
   df.dropna(how='any', inplace=True) #Drop all rows where any column has NAN
   return df
-
-
-# In[15]:
 
 
 #cleans the dataframe to remove special characters, stopwords, spaces, numbers and performs lemmatization and Stemming
@@ -80,7 +73,6 @@ def cleanFile(data):
   return data
 
 
-# In[16]:
 
 
 #Calculates the scroe for each author based number of unreliable articles vs total number of articles
@@ -93,13 +85,11 @@ def authorScore(data):
         
 
 
-# In[17]:
-
 
 #Performs all the preprossing and stores the output into a pickle file df_clean
 #Runs additional plots for unigrams and ngrams and also calculates sentiment score
 def mainPreProcessing():
-    df = loadFile("C:/Users/13236/Downloads/Fake-News-Dataset-master/fake-news/train.csv") #Enter file Path
+    df = loadFile("train.csv") #Enter file Path
     df_clean = cleanFile(df)
     df_clean_auth = authorScore(df_clean)
     filename = 'df_clean' #C:\Users\13236\Downloads
@@ -110,16 +100,10 @@ def mainPreProcessing():
     SentimentAnalysis.mainSentimentAnalysis()
 
 
-# In[ ]:
-
-
 if __name__ == "__main__":
   mainPreProcessing()
-  #df = loadFile("C:/Users/13236/Downloads/Fake-News-Dataset-master/fake-news/train.csv") #Enter file path
-  #df_clean = cleanFile(df)
 
 
-# In[ ]:
 
 
 
