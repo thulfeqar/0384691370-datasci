@@ -53,8 +53,6 @@ def cleanFile(data):
   data['filteredText'] = filtered_sentence
   data['filteredTitle'] = filtered_title
 
-  data['filteredText'] = filtered_sentence
-
   return data
 
 def main():
