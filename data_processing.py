@@ -1,3 +1,5 @@
+#ANUJ - renamed your file for clarity
+
 # -*- coding: utf-8 -*-
 """DataScience_FinalProject.ipynb
 
@@ -26,6 +28,8 @@ def cleanFile(data):
   data.dropna(how='any')
 
   #Remove stop words, sppecial characters and numbers from text
+  #nltk.download('stopwords')
+  #nltk.download('punkt')
   stop_words = set(stopwords.words('english'))  
   filtered_sentence = []
   for t in data.text: 
@@ -47,10 +51,9 @@ def main():
   df_clean = cleanFile(df)
   df_clean.head()
 
-if __name__ == "__main__":
-  #main()
-  df = loadFile('') #Enter file path
-  df_clean = cleanFile(df)
+  if __name__ == "__main__":
+    #main()
+    df = loadFile('') #Enter file path
+    df_clean = cleanFile(df)
 
-print(df_clean.head())
-
+  print(df_clean.head())
