@@ -64,11 +64,12 @@ def authorScore(data):
 def main():
   df = loadFile('') #Enter file Path
   df_clean = cleanFile(df)
-  df_clean.head()
+  df_clean_auth = authorScore(df_clean)
+  filename = 'df_clean' #C:\Users\13236\Downloads
+  outfile = open(filename,'wb')
+  pickle.dump(df_clean_auth,outfile)
+  outfile.close()
 
   if __name__ == "__main__":
-    #main()
-    df = loadFile('') #Enter file path
-    df_clean = cleanFile(df)
-
-  print(df_clean.head())
+    main()
+    
