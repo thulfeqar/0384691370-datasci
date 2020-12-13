@@ -44,6 +44,7 @@ def plotGraph(data,title):
     plt.figure(figsize=(10, 5))
     plt.bar(y_pos, count, align='edge', alpha=0.5, width=0.3)
     plt.xticks(y_pos, objects)
+    plt.xticks(rotation=90)
     plt.ylabel('Count')
     plt.title(title)
     plt.show()
