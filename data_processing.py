@@ -55,6 +55,12 @@ def cleanFile(data):
 
   return data
 
+def authorScore(data):
+    auth = pd.DataFrame(data.groupby('author').apply(lambda x: x['label'].sum()/x['label'].count()))
+    auth.columns = ['authorScore']
+    data = pd.merge(left=data, right=auth, left_on='author', right_on='author')
+    return data
+
 def main():
   df = loadFile('') #Enter file Path
   df_clean = cleanFile(df)
